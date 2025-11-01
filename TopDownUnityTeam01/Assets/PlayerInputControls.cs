@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInputControls : MonoBehaviour
@@ -14,14 +15,13 @@ public class PlayerInputControls : MonoBehaviour
         animator = GetComponent<Animator>();
 
     }
-    public void OnMove(InputAction.CallbackContext context)
+    [SerializeField] UnityEvent triggered;
+    public void OnInteract(InputAction.CallbackContext context)
     {
-        Vector2 movedir = context.ReadValue<Vector2>();
-
-        rigidbody2D.linearVelocity = moveSpeed * movedir;
-
-        animator.SetFloat("InputX", movedir.x);
-        animator.SetFloat("InputY", movedir.y);
+        if (context.started)
+        {
+            triggered?.Invoke();
+        }
     }
    
 }

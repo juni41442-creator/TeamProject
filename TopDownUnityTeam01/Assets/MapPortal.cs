@@ -1,6 +1,5 @@
 using Unity.Cinemachine;
 using UnityEngine;
-
 public class MapPortal : MonoBehaviour
 {
     //플레이어의 캐릭터를 원하는 지점으로 이동 해야 한다.
